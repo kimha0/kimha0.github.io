@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'UhBeemysen';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeemysen.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { font-family: 'Noto Sans KR', sans-serif; }
+.uh-beemysen * { font-family: 'UhBeemysen', sans-serif; }
+
+.list > section:first-child { border-top-width: 0; }

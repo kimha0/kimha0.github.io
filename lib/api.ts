@@ -3,7 +3,7 @@ import { join, resolve } from 'path'
 import matter from 'gray-matter'
 import glob from 'glob'
 
-import { convertListBySlugData } from './data'
+import { convertListBySlugData, getDateBySlugName } from './data'
 import { IListData } from '../types/list'
 
 import type { IData, IPost } from '../types/post'
@@ -21,13 +21,18 @@ export function getPostSlugs(): string[] {
 export function getPostList(): IListData[] {
   const filePaths = glob.sync(postsWildCard)
 
-  return filePaths.map(slug => getPost(slug))
-    .map(({ data, content }) => ({
+  return filePaths
+    .map(slug => ({
+      ...getPost(slug),
+      createDate: getDateBySlugName(slug)
+    }))
+    .map(({ data, content, createDate }) => ({
       ...convertListBySlugData(data),
       content,
+      createDate,
     }))
     .filter(({ published }) => published)
-    .map(({ title, categories, tags, content }) => ({ title, categories, tags, content }))
+    .map(({ title, categories, tags, content, thumbnail, createDate }) => ({ title, categories, tags, content, thumbnail, createDate }))
 }
 
 export function getPost(path: string): IPost {

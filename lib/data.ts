@@ -1,8 +1,10 @@
-import { IData } from "../types/post";
-
-export function convertListBySlugData(data: Partial<IData>) {
+import { format } from 'date-fns'
+import type { IData } from "../types/post";
+import { basename } from 'path'
+export function convertListBySlugData(data: Partial<IData>): IData {
   return {
     categories: data.categories ?? '',
+    thumbnail: data.thumbnail ?? '',
     meta: {
       description: data.meta?.description ?? '',
       keyword: {
@@ -29,4 +31,18 @@ export function convertListBySlugData(data: Partial<IData>) {
     tags: data.tags ?? [],
     title: data.title ?? '',
   }
+}
+
+export function convertListContent(content: string): string {
+  const contents = content.split(/\r\n|\r|\n/)
+  if (contents.length > 15) {
+    return contents.splice(0, 15).join('\r\n')
+  }
+  return content
+}
+
+const SLUG_REG_EXP = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])-(\s|\w+)+.md/
+export function getDateBySlugName(slugName: string): string {
+  const filename = basename(slugName)
+  return SLUG_REG_EXP.test(filename) ? format(new Date(filename.substring(0, 10)), 'yyyy년 MM월 dd일') : ''
 }

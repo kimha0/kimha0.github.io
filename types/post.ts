@@ -5,6 +5,7 @@ export interface IPost {
 
 export interface IData {
   title: string
+  thumbnail: string
   published: boolean
   categories: string
   tags: string[]
