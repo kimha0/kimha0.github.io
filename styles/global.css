@@ -15,4 +15,4 @@
 /* Your own custom utilities */
 
 @import './custom-global.styles.css';
-@import 'github-markdown-css'
+@import './github-markdown-css.css'

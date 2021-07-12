@@ -14,7 +14,7 @@ interface IProps {
 function List({ slugs }: IProps) {
   return (
     <div className='grid gap-4 grid-cols-1 list'>
-      {slugs.map(slug => <ListItem key={slug.title} item={slug} />)}
+      {slugs.map(slug => <ListItem key={slug.url} item={slug} />)}
     </div>
   )
 }
