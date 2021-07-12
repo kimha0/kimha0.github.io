@@ -21,16 +21,16 @@ function ListItem({ item }: { item: IListData }) {
   return (
     <section className='notosanskr bg-transparent border-t border-gray-500 pt-8 px-4'>
       <div>
-        <p className='text-xs mb-2 text-gray-600'>{item.createDate}</p>
-        <p className='text-2xl leading-7 text-gray-800'>{item.title}</p>
-        <p className='text-base mb-2 text-gray-700'>{item.categories}</p>
+        <p className='text-xs mb-2'>{item.createDate}</p>
+        <p className='text-2xl leading-7'>{item.title}</p>
+        <p className='text-base mb-2'>{item.categories}</p>
       </div>
       <figure className='overflow-hidden mb-8 lg:mb-12'>
         <img src={item.thumbnail} className='object-cover w-full'/>
       </figure>
-      <div className='text-base text-gray-600 markdown-body max-h-80 overflow-hidden relative'>
-        <ReactMarkdown>{item.content}</ReactMarkdown>
-        <div className='bg-gradient-to-b from-transparent to-white h-40 absolute top-80 w-full transform -translate-y-full'></div>
+      <div className='text-base markdown-body max-h-80 overflow-hidden relative'>
+        <ReactMarkdown className="text-black dark:text-gray-300">{item.content}</ReactMarkdown>
+        <div className='bg-gradient-to-b from-transparent to-white dark:to-black h-40 absolute top-80 w-full transform -translate-y-full'></div>
       </div>
     </section>
   )
