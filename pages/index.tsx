@@ -1,7 +1,9 @@
-import ReactMarkdown from 'react-markdown'
+import Markdown from '../components/ReactMarkdown'
 import Layout from '../components/layout'
 import { getPostList } from '../lib/api'
 import { convertListContent } from '../lib/data'
+import Link from 'next/link'
+import Image from 'next/image'
 
 import type { IListData } from '../types/list'
 
@@ -25,13 +27,26 @@ function ListItem({ item }: { item: IListData }) {
         <p className='text-2xl leading-7'>{item.title}</p>
         <p className='text-base mb-2'>{item.categories}</p>
       </div>
-      <figure className='overflow-hidden mb-8 lg:mb-12'>
-        <img src={item.thumbnail} className='object-cover w-full'/>
-      </figure>
-      <div className='text-base markdown-body max-h-80 overflow-hidden relative'>
-        <ReactMarkdown className="text-black dark:text-gray-300">{item.content}</ReactMarkdown>
-        <div className='bg-gradient-to-b from-transparent to-white dark:to-black h-40 absolute top-80 w-full transform -translate-y-full'></div>
-      </div>
+      <Link href={`/post/${item.url}`} passHref>
+        <figure className='overflow-hidden cursor-pointer'>
+          <Image
+            src={{
+              src: `/${item.thumbnail}`,
+              height: 508,
+              width: 992,
+            }}
+            className='object-cover w-full'
+            alt={`${item.title} thumbnail`}
+          />
+        </figure>
+      </Link>
+      <div className='mb-8 lg:mb-12' />
+      <Link href={`/post/${item.url}`} passHref>
+        <div className='text-base markdown-body max-h-80 overflow-hidden relative cursor-pointer'>
+          <Markdown className="text-black dark:text-gray-300">{item.content}</Markdown>
+          <div className='bg-gradient-to-b from-transparent to-white dark:to-black h-40 absolute top-80 w-full transform -translate-y-full'></div>
+        </div>
+      </Link>
     </section>
   )
 }
@@ -49,7 +64,6 @@ export const getStaticProps = async () => {
       ...post,
       content: convertListContent(post.content)
     }))
-  
   // const contents = await Promise.all(posts.map(slug => markdownToHtml(slug.content)))
   // const slugs = posts.map((slug, i) => ({ ...slug, content: contents[i] }))
 

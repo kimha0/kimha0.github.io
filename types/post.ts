@@ -1,6 +1,8 @@
 export interface IPost {
   data: Partial<IData>
   content: string
+  url: string
+  createDate: string
 }
 
 export interface IData {

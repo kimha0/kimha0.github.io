@@ -11,3 +11,7 @@
 .uh-beemysen * { font-family: 'UhBeemysen', sans-serif; }
 
 .list > section:first-child { border-top-width: 0; }
+
+pre, code, kbd, samp {
+  overflow: scroll;
+}
