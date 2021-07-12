@@ -4,7 +4,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import type { Components } from 'react-markdown/src/ast-to-react'
 import useIsomorphicLayoutEffect from '../lib/useIsoMorphicLayoutEffect'
-
+import gfm from 'remark-gfm'
 
 
 const components: (isDark: boolean) => Components = (isDark: boolean)  => ({
@@ -45,7 +45,11 @@ const Markdown: React.VFC<Props> = ({ className, children }) => {
     }
   }, [])
 
-  return <ReactMarkdown components={components(isDark)} className={className}>
+  const remarkPluginMemo = useMemo(() => {
+    return [gfm]
+  }, [])
+
+  return <ReactMarkdown components={componentsMemo} remarkPlugins={remarkPluginMemo} className={className}>
     {children}
   </ReactMarkdown>
 }
