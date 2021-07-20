@@ -47,7 +47,7 @@ function Post({ slug }: IProps) {
 
 export default function Home({ slug }: IProps) {
   return (
-    <Layout>
+    <Layout title={slug.data.title}>
       <Post slug={slug} />
     </Layout>
   )

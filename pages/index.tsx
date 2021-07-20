@@ -27,18 +27,20 @@ function ListItem({ item }: { item: IListData }) {
         <p className='text-2xl leading-7'>{item.title}</p>
         <p className='text-base mb-2'>{item.categories}</p>
       </div>
-      <Link href={`/post/${item.url}`} passHref>
-        <figure className='overflow-hidden cursor-pointer'>
-          <Image
-            src={{
-              src: `/${item.thumbnail}`,
-              height: 508,
-              width: 992,
-            }}
-            className='object-cover w-full'
-            alt={`${item.title} thumbnail`}
-          />
-        </figure>
+      <Link href={`/post/${item.url}`}>
+        <a>
+          <figure className='overflow-hidden cursor-pointer'>
+            <Image
+              src={{
+                src: `/${item.thumbnail}`,
+                height: 508,
+                width: 992,
+              }}
+              className='object-cover w-full'
+              alt={`${item.title} thumbnail`}
+            />
+          </figure>
+        </a>
       </Link>
       <div className='mb-8 lg:mb-12' />
       <Link href={`/post/${item.url}`} passHref>
