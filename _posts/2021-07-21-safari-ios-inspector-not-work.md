@@ -1,7 +1,7 @@
 ---
 title: iOS Safari 인스펙터 탭이 보이지 않는 현상
 description: Safari technology preview를 다운받으면 된다.
-thumbnail: /images/2021-07-21-thumb.png
+thumbnail: https://blog.hayoung.dev/images/2021-07-21-thumb.png
 dueDate: 2021-07-21
 
 published: true
