@@ -41,8 +41,8 @@ export function convertListContent(content: string): string {
   return content
 }
 
-const SLUG_REG_EXP = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])-(\s|\w+)+.md/
+const SLUG_REG_EXP = /^(19|20)\d{2}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[0-1])-([-]|\s|\w+)+.md/
 export function getDateBySlugName(slugName: string): string {
   const filename = basename(slugName)
-  return SLUG_REG_EXP.test(filename) ? format(new Date(filename.substring(0, 10)), 'yyyy년 MM월 dd일') : ''
+  return SLUG_REG_EXP.test(filename) ? format(new Date(filename.substring(0, 10)), 'yyyy-MM-dd') : ''
 }

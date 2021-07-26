@@ -27,7 +27,7 @@ function Post({ slug }: IProps) {
           <figure className='overflow-hidden mb-8 lg:mb-12'>
             <Image
               src={{
-                src: `/${slug.data.thumbnail}`,
+                src: `${slug.data.thumbnail}`,
                 height: 508,
                 width: 992,
               }}

@@ -4,6 +4,7 @@ import { getPostList } from '../lib/api'
 import { convertListContent } from '../lib/data'
 import Link from 'next/link'
 import Image from 'next/image'
+import { differenceInDays } from 'date-fns'
 
 import type { IListData } from '../types/list'
 
@@ -32,7 +33,7 @@ function ListItem({ item }: { item: IListData }) {
           <figure className='overflow-hidden cursor-pointer'>
             <Image
               src={{
-                src: `/${item.thumbnail}`,
+                src: `${item.thumbnail}`,
                 height: 508,
                 width: 992,
               }}
@@ -66,6 +67,7 @@ export const getStaticProps = async () => {
       ...post,
       content: convertListContent(post.content)
     }))
+    .sort((a, b) => differenceInDays(new Date(b.createDate), new Date(a.createDate)))
   // const contents = await Promise.all(posts.map(slug => markdownToHtml(slug.content)))
   // const slugs = posts.map((slug, i) => ({ ...slug, content: contents[i] }))
 
