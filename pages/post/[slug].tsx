@@ -14,7 +14,7 @@ interface IProps {
 function Post({ slug }: IProps) {
   return (
     <div className='grid gap-4 grid-cols-1 list'>
-      <section className='notosanskr bg-transparent border-t border-gray-500 pt-8 px-4'>
+      <section className='notosanskr bg-transparent border-t border-gray-500 pt-8 px-4 pb-20'>
         <div>
           <p className='text-xs mb-2'>{slug.createDate}</p>
           <p className='text-2xl leading-7'>{slug.data.title}</p>
